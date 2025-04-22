@@ -523,7 +523,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SensorName: RayPerceptionSensor
-  m_DetectableTags: []
+  m_DetectableTags:
+  - Car
+  - Coin
+  - Ground
   m_RaysPerDirection: 15
   m_MaxRayDegrees: 30
   m_SphereCastRadius: 0.5
@@ -552,7 +555,7 @@ GameObject:
   - component: {fileID: 1072846929}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,7 +838,7 @@ GameObject:
   - component: {fileID: 1699936929}
   m_Layer: 0
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -944,7 +947,7 @@ GameObject:
   - component: {fileID: 2006599797}
   m_Layer: 0
   m_Name: coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

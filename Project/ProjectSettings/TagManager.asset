@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - target
+  - Car
+  - Coin
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -37,18 +37,17 @@ public class Jumper : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        Debug.Log("ActionReceived");
-        if (Mathf.FloorToInt(actions.DiscreteActions[0]) == 1 && Mathf.Abs(rb.linearVelocity.y) < 0.01f)
+        RaycastHit hit;
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, out hit, 1.01f) && hit.collider.CompareTag("Ground");
+        if (Mathf.FloorToInt(actions.DiscreteActions[0]) == 1 && isGrounded)
         {
-            Console.WriteLine("Jumping");
+            Debug.Log("Jumping");
             rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
         }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        Debug.Log("Heuristic method called");
         var discreteActions = actionsOut.DiscreteActions;
         discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
-        Debug.Log($"Discrete action set to: {discreteActions[0]}");
     }
 }
