@@ -9,10 +9,26 @@ public class Jumper : Agent
     [SerializeField]
     float _jumpForce = 5f;
     private Rigidbody rb;
+    private bool wasAboveCar = false;
+    [SerializeField]
+    private float episodeTimeLimit = 60f; // Time limit in seconds
+    private float elapsedTime = 0f;
+    [SerializeField]
+    private Spawner spawner; // Reference to the Spawner script
 
     void Start()
     {
         Initialize();
+    }
+
+    void Update()
+    {
+        elapsedTime += Time.deltaTime; // Increment elapsed time
+        if (elapsedTime >= episodeTimeLimit)
+        {
+            EndEpisode(); // End the episode when time limit is reached
+            elapsedTime = 0f; // Reset elapsed time for the next episode
+        }
     }
     public override void Initialize()
     {
@@ -22,6 +38,8 @@ public class Jumper : Agent
     public override void OnEpisodeBegin()
     {
         resetPosition();
+        spawner.ResetSpawner(); // Reset the spawner to spawn new objects
+        wasAboveCar = false;
     }
 
     private void resetPosition()
@@ -32,7 +50,7 @@ public class Jumper : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-       
+        // Add observations here if needed
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -43,11 +61,41 @@ public class Jumper : Agent
         {
             Debug.Log("Jumping");
             rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            AddReward(-0.1f); // Negative reward for jumping
         }
     }
+
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
         discreteActions[0] = Input.GetKey(KeyCode.Space) ? 1 : 0;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Coin"))
+        {
+            AddReward(1.0f); // Positive reward for collecting a coin
+            Destroy(collision.gameObject); // Remove the coin
+        }
+        else if (collision.collider.CompareTag("Car"))
+        {
+            AddReward(-1.0f); // Large negative reward for hitting the car
+            EndEpisode(); // End the episode
+        }
+        else if (collision.collider.CompareTag("Ground") && wasAboveCar)
+        {
+            AddReward(2.0f); // Big positive reward for landing after being above the car
+            wasAboveCar = false; // Reset the flag
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            AddReward(0.5f); // Small positive reward for being above the car
+            wasAboveCar = true; // Set the flag
+        }
     }
 }
