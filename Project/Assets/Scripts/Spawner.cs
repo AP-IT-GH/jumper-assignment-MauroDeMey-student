@@ -42,6 +42,7 @@ public class Spawner : MonoBehaviour
         {
             Destroy(obj);
         }
+        _spawnedObjects.Clear();
     } 
 
     // Update is called once per frame

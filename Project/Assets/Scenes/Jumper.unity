@@ -453,6 +453,14 @@ PrefabInstance:
       propertyPath: _jumpForce
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8153229928096322217, guid: c31176186b82416498573b88091a8354, type: 3}
+      propertyPath: m_ObservationStacks
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153229928096322217, guid: c31176186b82416498573b88091a8354, type: 3}
+      propertyPath: m_AlternatingRayOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

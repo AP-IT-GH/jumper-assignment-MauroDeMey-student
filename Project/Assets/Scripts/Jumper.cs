@@ -15,7 +15,6 @@ public class Jumper : Agent
     private float elapsedTime = 0f;
     [SerializeField]
     private Spawner spawner; // Reference to the Spawner script
-    private bool coinCollected = false; 
 
     void Start()
     {
@@ -41,7 +40,6 @@ public class Jumper : Agent
         resetPosition();
         spawner.ResetSpawner(); // Reset the spawner to spawn new objects
         wasAboveCar = false;
-        coinCollected = false; 
     }
 
     private void resetPosition()
@@ -62,6 +60,7 @@ public class Jumper : Agent
         if (Mathf.FloorToInt(actions.DiscreteActions[0]) == 1 && isGrounded) //Dit lijkt backwards coded. Negative penalty zal altijd applied zijn als de agent jumped.
         {
             rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            AddReward(-0.1f);
         }
     }
 
@@ -78,7 +77,6 @@ public class Jumper : Agent
             Debug.Log("Coin collected");
             AddReward(1.0f); // Positive reward for collecting a coin
             Destroy(collision.gameObject); // Remove the coin
-            coinCollected = true; 
         }
         else if (collision.collider.CompareTag("Car"))
         {
@@ -86,21 +84,11 @@ public class Jumper : Agent
             AddReward(-2.0f); // Large negative reward for hitting the car
             EndEpisode(); // End the episode
         }
-        else if (collision.collider.CompareTag("Ground"))
+        else if (collision.collider.CompareTag("Ground") && wasAboveCar)
         {
-            if (wasAboveCar)
-            {
-                Debug.Log("good jump!");
-                AddReward(2.0f); // Big positive reward for landing after being above the car
-                wasAboveCar = false; // Reset the flag
-            }
-            else if (!coinCollected)
-            {
-                Debug.Log("Unproductive jump!");
-                AddReward(-0.5f); // Negative reward for jumping without purpose
-            }
-
-            coinCollected = false; 
+            Debug.Log("landed on ground after being above car!");
+            AddReward(2.0f); // Positive reward for landing after being above the car
+            wasAboveCar = false; // Reset the flag
         }
     }
 
