@@ -1,1 +1,83 @@
-{"count":1,"self":44.2140032,"total":44.398865099999995,"children":{"InitializeActuators":{"count":2,"self":0.0009993,"total":0.0009993,"children":null},"InitializeSensors":{"count":2,"self":0.0020066999999999997,"total":0.0020066999999999997,"children":null},"AgentSendState":{"count":1932,"self":0.0299101,"total":0.0381504,"children":{"CollectObservations":{"count":194,"self":0,"total":0,"children":null},"WriteActionMask":{"count":194,"self":0.0005457,"total":0.0005457,"children":null},"RequestDecision":{"count":194,"self":0.0076945999999999994,"total":0.0076945999999999994,"children":null}}},"DecideAction":{"count":1932,"self":0.10474539999999999,"total":0.10574689999999999,"children":{"RayPerceptionSensor.Perceive":{"count":194,"self":0.0010015,"total":0.0010015,"children":null}}},"AgentAct":{"count":1932,"self":0.037958399999999996,"total":0.037958399999999996,"children":null}},"gauges":{"CubeAgent.CumulativeReward":{"count":2,"max":15.1999969,"min":0,"runningAverage":7.59999847,"value":15.1999969,"weightedAverage":3.79999924}},"metadata":{"timer_format_version":"0.1.0","start_time_seconds":"1745952099","unity_version":"6000.0.36f1","command_line_arguments":"C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.36f1\\Editor\\Unity.exe -projectpath C:\\Users\\mauro\\Desktop\\School\\Jaar 2\\Sem 2\\VR Experience\\MLAgents3\\Project -useHub -hubIPC -cloudEnvironment production","communication_protocol_version":"1.5.0","com.unity.ml-agents_version":"3.0.0","scene_name":"Jumper","end_time_seconds":"1745952143"}}
+{
+  "count": 1,
+  "self": 44.2140032,
+  "total": 44.398865099999995,
+  "children": {
+    "InitializeActuators": {
+      "count": 2,
+      "self": 0.0009993,
+      "total": 0.0009993,
+      "children": null
+    },
+    "InitializeSensors": {
+      "count": 2,
+      "self": 0.0020066999999999997,
+      "total": 0.0020066999999999997,
+      "children": null
+    },
+    "AgentSendState": {
+      "count": 1932,
+      "self": 0.0299101,
+      "total": 0.0381504,
+      "children": {
+        "CollectObservations": {
+          "count": 194,
+          "self": 0,
+          "total": 0,
+          "children": null
+        },
+        "WriteActionMask": {
+          "count": 194,
+          "self": 0.0005457,
+          "total": 0.0005457,
+          "children": null
+        },
+        "RequestDecision": {
+          "count": 194,
+          "self": 0.0076945999999999994,
+          "total": 0.0076945999999999994,
+          "children": null
+        }
+      }
+    },
+    "DecideAction": {
+      "count": 1932,
+      "self": 0.10474539999999999,
+      "total": 0.10574689999999999,
+      "children": {
+        "RayPerceptionSensor.Perceive": {
+          "count": 194,
+          "self": 0.0010015,
+          "total": 0.0010015,
+          "children": null
+        }
+      }
+    },
+    "AgentAct": {
+      "count": 1932,
+      "self": 0.037958399999999996,
+      "total": 0.037958399999999996,
+      "children": null
+    }
+  },
+  "gauges": {
+    "CubeAgent.CumulativeReward": {
+      "count": 2,
+      "max": 15.1999969,
+      "min": 0,
+      "runningAverage": 7.59999847,
+      "value": 15.1999969,
+      "weightedAverage": 3.79999924
+    }
+  },
+  "metadata": {
+    "timer_format_version": "0.1.0",
+    "start_time_seconds": "1745952099",
+    "unity_version": "6000.0.36f1",
+    "command_line_arguments": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.36f1\\Editor\\Unity.exe -projectpath C:\\Users\\mauro\\Desktop\\School\\Jaar 2\\Sem 2\\VR Experience\\MLAgents3\\Project -useHub -hubIPC -cloudEnvironment production",
+    "communication_protocol_version": "1.5.0",
+    "com.unity.ml-agents_version": "3.0.0",
+    "scene_name": "Jumper",
+    "end_time_seconds": "1745952143"
+  }
+}
