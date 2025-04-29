@@ -97,7 +97,7 @@ public class Jumper : Agent
             else if (!coinCollected)
             {
                 Debug.Log("Unproductive jump!");
-                AddReward(-0.5f); // Negative reward for jumping without purpose
+                AddReward(-1f); // Negative reward for jumping without purpose
             }
 
             coinCollected = false; 
